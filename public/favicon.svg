@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EBC978" />
+      <stop offset="100%" stop-color="#D4A017" />
+    </linearGradient>
+    <radialGradient id="forestGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#0F4433" />
+      <stop offset="100%" stop-color="#082B21" />
+    </radialGradient>
+  </defs>
+  <!-- Background -->
+  <circle cx="32" cy="32" r="30" fill="url(#forestGlow)" stroke="#D4A017" stroke-width="2.5" />
+  <!-- Inner Ring Accent -->
+  <circle cx="32" cy="32" r="26" fill="none" stroke="#D4A017" stroke-width="0.75" stroke-dasharray="3 2" opacity="0.6" />
+  <!-- POULTRIVA Crest Emblem -->
+  <path
+    d="M18 44c4-16 14-24 28-26-6 4-10 8-12 14 4-2 8-2 12 0-8 2-14 6-18 12"
+    fill="none"
+    stroke="url(#goldGrad)"
+    stroke-width="3.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg>
