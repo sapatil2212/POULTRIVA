@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin, Phone, ChevronRight, Heart } from "lucide-react";
 import { SITE } from "@/data/site";
 import { PRODUCTS } from "@/data/products";
 import { Logo } from "./Logo";
@@ -10,22 +10,34 @@ export function Footer() {
       <div className="container-x grid gap-12 py-20 md:grid-cols-12">
         <div className="md:col-span-4">
           <Logo light />
-          <p className="mt-6 max-w-xs text-sm leading-relaxed text-primary-foreground/70">
-            A poultry nutrition and feed supplement brand associated with {SITE.company}, Nashik.
+          <p className="mt-6 max-w-sm text-sm leading-relaxed text-primary-foreground/70">
+            POULTRIVA is a poultry nutrition and feed supplement brand associated with {SITE.company}, Nashik. We focus on
+            science-driven nutritional solutions that support poultry health, growth, and performance.
+          </p>
+          <p className="serif-accent mt-4 max-w-sm text-sm text-gold-soft">
+            Science in Nutrition. Excellence in Performance.
           </p>
         </div>
-        <FooterCol title="Products">
-          {PRODUCTS.map((p) => (
-            <Link key={p.slug} to="/products/$slug" params={{ slug: p.slug }} className="hover:text-gold-soft">
-              {p.name}
-            </Link>
-          ))}
-        </FooterCol>
+        <div className="md:col-span-3">
+          <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-soft">Products</h2>
+          <div className="mt-5 grid grid-cols-2 gap-x-6 gap-y-3 text-sm text-primary-foreground/80">
+            {PRODUCTS.map((p) => (
+              <Link
+                key={p.slug}
+                to="/products/$slug"
+                params={{ slug: p.slug }}
+                className="group flex items-center gap-2 hover:text-gold-soft"
+              >
+                <ChevronRight className="h-3.5 w-3.5 shrink-0 text-gold-soft/60 transition-transform group-hover:translate-x-0.5 group-hover:text-gold-soft" aria-hidden />
+                <span>{p.name}</span>
+              </Link>
+            ))}
+          </div>
+        </div>
         <FooterCol title="Company">
           <Link to="/about-us" className="hover:text-gold-soft">About Us</Link>
           <Link to="/solutions" className="hover:text-gold-soft">Solutions</Link>
           <Link to="/quality" className="hover:text-gold-soft">Quality & Commitment</Link>
-          <Link to="/resources" className="hover:text-gold-soft">Resources</Link>
           <Link to="/faqs" className="hover:text-gold-soft">FAQs</Link>
         </FooterCol>
         <div className="md:col-span-3">
@@ -45,10 +57,20 @@ export function Footer() {
       <div className="border-t border-primary-foreground/10">
         <div className="container-x flex flex-col gap-4 py-6 text-xs text-primary-foreground/75 md:flex-row md:items-center md:justify-between">
           <p>© {new Date().getFullYear()} POULTRIVA · {SITE.company}. All rights reserved.</p>
-          <div className="flex gap-6">
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
             <Link to="/privacy-policy" className="hover:text-gold-soft">Privacy</Link>
             <Link to="/terms-of-use" className="hover:text-gold-soft">Terms</Link>
             <Link to="/disclaimer" className="hover:text-gold-soft">Disclaimer</Link>
+            <a
+              href="https://sapdigitechsolutions.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 hover:text-gold-soft"
+            >
+              Made with
+              <Heart className="h-3.5 w-3.5 fill-gold-soft text-gold-soft" aria-label="love" />
+              by SAP DigiTech Solutions
+            </a>
           </div>
         </div>
       </div>

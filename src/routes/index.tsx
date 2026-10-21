@@ -3,15 +3,21 @@ import { motion, useScroll, useTransform, AnimatePresence } from "motion/react";
 import { ArrowRight, ArrowLeft, MessageCircle } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import heroImg from "@/assets/hero-farm.jpg";
+import hero1Img from "@/assets/hero-images/hero-1.png";
+import hero2Img from "@/assets/hero-images/hero-2.png";
+import hero3Img from "@/assets/hero-images/hero-3.png";
+import hero4Img from "@/assets/hero-images/hero-4.png";
+import homeAboutImg from "@/assets/home/home-about.png";
 import layersImg from "@/assets/layers.jpg";
 import waterImg from "@/assets/water.jpg";
 import feedImg from "@/assets/feed.jpg";
+import nutritionLabImg from "@/assets/nutrition-lab.jpg";
 import { PRODUCTS } from "@/data/products";
 import { waLink, productWaMessage } from "@/data/site";
-import { ARTICLES } from "@/data/articles";
 import { Reveal, MaskImage } from "@/components/site/Reveal";
 import { FinalCTA } from "@/components/site/FinalCTA";
 import { CertificationsMarquee } from "@/components/site/CertificationsMarquee";
+import { GalleryMarquee } from "@/components/site/GalleryMarquee";
 import { seo } from "@/lib/seo";
 import { Button } from "@/components/ui/button";
 import { useMotionPreference } from "@/hooks/use-motion-preference";
@@ -38,7 +44,7 @@ function Home() {
       <Ecosystem />
       <Approach />
       <Spotlight />
-      <Insights />
+      <GalleryMarquee />
       <FinalCTA />
     </>
   );
@@ -46,7 +52,7 @@ function Home() {
 
 const HERO_SLIDES = [
   {
-    src: heroImg,
+    src: hero1Img,
     alt: "Healthy broiler chickens in a clean, well-ventilated poultry house",
     titleLines: ["Advancing", "Poultry Nutrition."],
     accent: "Supporting better performance.",
@@ -56,7 +62,7 @@ const HERO_SLIDES = [
     secondaryCta: { label: "Discover POULTRIVA", to: "/about-us" },
   },
   {
-    src: layersImg,
+    src: hero2Img,
     alt: "Layer hens in a modern poultry facility",
     titleLines: ["Optimized", "Mineral Balance."],
     accent: "Superior eggshell strength & bone density.",
@@ -66,7 +72,7 @@ const HERO_SLIDES = [
     secondaryCta: { label: "Our Solutions", to: "/solutions" },
   },
   {
-    src: waterImg,
+    src: hero3Img,
     alt: "Clean drinking water management for poultry",
     titleLines: ["Pure Water,", "Healthy Flocks."],
     accent: "Effective water acidification & line hygiene.",
@@ -76,7 +82,7 @@ const HERO_SLIDES = [
     secondaryCta: { label: "Quality Commitment", to: "/quality" },
   },
   {
-    src: feedImg,
+    src: hero4Img,
     alt: "Quality poultry feed and nutrition",
     titleLines: ["Vital Amino Acids", "& Micronutrients."],
     accent: "Maximizing feed conversion & vitality.",
@@ -130,7 +136,7 @@ function Hero() {
       </div>
 
       {/* Hero content with increased height and smooth blur entrance on slide change */}
-      <div className="container-x relative z-10 flex min-h-[84vh] md:min-h-[88vh] lg:min-h-[92vh] flex-col justify-center pt-32 pb-24 md:pt-40 md:pb-28 lg:pt-48 lg:pb-36">
+      <div className="container-x relative z-10 flex h-[92vh] md:h-[96vh] lg:h-screen flex-col justify-center pt-32 pb-24 md:pt-40 md:pb-28 lg:pt-48 lg:pb-36">
         <motion.div style={{ y: textY }} className="max-w-2xl">
           <AnimatePresence mode="wait">
             <motion.div
@@ -165,7 +171,7 @@ function Hero() {
                     {l}
                   </span>
                 ))}
-                <span className="serif-accent block text-gold-soft font-normal text-xl sm:text-2xl md:text-[1.75rem] lg:text-[2rem] leading-snug pt-1 pb-2">
+                <span className="serif-accent block text-gold-soft font-bold text-xl sm:text-2xl md:text-[1.75rem] lg:text-[2rem] leading-snug pt-1 pb-2">
                   {currentSlide.accent}
                 </span>
               </h1>
@@ -187,7 +193,7 @@ function Hero() {
 
       {/* Floating Animated Left/Right Navigation in Bottom Right Corner (reveals on hero hover) */}
       <div
-        className="absolute bottom-8 right-20 z-30 flex items-center gap-2.5 opacity-0 pointer-events-none transition-all duration-300 ease-out translate-y-3 group-hover:opacity-100 group-hover:pointer-events-auto group-hover:translate-y-0 focus-within:opacity-100 focus-within:pointer-events-auto md:bottom-10 md:right-24 lg:right-28"
+        className="absolute bottom-24 right-20 z-30 flex items-center gap-2.5 opacity-0 pointer-events-none transition-all duration-300 ease-out translate-y-3 group-hover:opacity-100 group-hover:pointer-events-auto group-hover:translate-y-0 focus-within:opacity-100 focus-within:pointer-events-auto md:bottom-28 md:right-24 lg:right-28"
         aria-label="Slideshow controls"
       >
         <button
@@ -252,7 +258,7 @@ function Showcase() {
             <p className="eyebrow justify-center before:block before:h-px before:w-8 before:bg-gold before:content-[''] after:block after:h-px after:w-8 after:bg-gold after:content-['']">
               Focused Poultry Nutrition
             </p>
-            <h2 className="serif-accent !font-semibold mt-6 text-navy text-[length:var(--type-display-lg)] leading-[1.18]">
+            <h2 className="serif-accent !font-semibold mt-6 text-navy text-[length:var(--type-display-lg)] leading-[1.05]">
               Thoughtfully formulated supplements for healthier flocks and better performance
             </h2>
           </Reveal>
@@ -280,8 +286,8 @@ function Intro() {
         <div className="relative md:col-span-5 min-h-[280px] md:min-h-0">
           <div className="relative aspect-[4/3] w-full md:aspect-auto md:absolute md:inset-0">
             <MaskImage
-              src={layersImg}
-              alt="Brown laying hens in a modern layer house"
+              src={homeAboutImg}
+              alt="POULTRIVA team focused on poultry nutrition and care"
               width={1280}
               height={960}
               className="h-full w-full rounded-[var(--radius-photo)]"
@@ -346,12 +352,6 @@ function Portfolio() {
                     height={960}
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  <span className="absolute left-4 top-4 rounded-full bg-card px-3 py-1 text-[0.7rem] font-semibold text-navy">
-                    {p.category}
-                  </span>
-                  <span className="serif-accent absolute right-4 top-4 text-3xl leading-none text-gold-cta">
-                    {p.index}
-                  </span>
                 </div>
                 <div className="flex flex-1 flex-col p-5">
                   <h3 className="text-xl font-semibold">{p.name}</h3>
@@ -361,7 +361,7 @@ function Portfolio() {
                     <Link
                       to="/products/$slug"
                       params={{ slug: p.slug }}
-                      className="btn-primary !gap-1.5 !px-2 !py-2.5 !text-[0.8rem]"
+                      className="btn-primary !gap-1.5 !px-2 !py-1.5 !text-[0.8rem]"
                     >
                       View Product
                     </Link>
@@ -369,7 +369,7 @@ function Portfolio() {
                       href={waLink(productWaMessage(p.name))}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="btn-ghost !gap-1.5 !px-2 !py-2.5 !text-[0.8rem]"
+                      className="btn-ghost !gap-1.5 !px-2 !py-1.5 !text-[0.8rem]"
                       aria-label={`Enquire about ${p.name} on WhatsApp`}
                     >
                       <MessageCircle className="h-4 w-4" />
@@ -411,16 +411,17 @@ function Ecosystem() {
         <Reveal>
           <p className="eyebrow">Our solutions</p>
           <h2 className="display-lg mt-6 max-w-3xl">
-            Supporting the Essentials of <span className="serif-accent text-gold-cta">Poultry Nutrition.</span>
+            Supporting the Essentials of<br />
+            <span className="serif-accent text-gold-cta">Poultry Nutrition.</span>
           </h2>
         </Reveal>
         <div className="mt-16 grid gap-14 lg:grid-cols-12 lg:items-stretch">
-          {/* Left Side: Solution Image Preview (matches exact height of right side) */}
+          {/* Right Side: Solution Image Preview (matches exact height of left side) */}
           <div
             id="focus-panel"
             role="tabpanel"
             aria-labelledby={`focus-tab-${active}`}
-            className="relative lg:col-span-5 min-h-[320px] lg:min-h-0"
+            className="relative lg:order-2 lg:col-span-5 lg:col-start-8 min-h-[320px] lg:min-h-0"
           >
             <div className="relative aspect-[4/3] w-full lg:aspect-auto lg:absolute lg:inset-0 overflow-hidden rounded-[var(--radius-photo)] shadow-md">
               <AnimatePresence mode="wait">
@@ -460,12 +461,12 @@ function Ecosystem() {
             </div>
           </div>
 
-          {/* Right Side: Focus Area Tabs */}
+          {/* Left Side: Focus Area Tabs */}
           <div
             role="tablist"
             aria-label="Focus areas"
             aria-orientation="vertical"
-            className="flex flex-col justify-between lg:col-span-6 lg:col-start-7"
+            className="flex flex-col justify-between lg:order-1 lg:col-span-6"
           >
             {AREAS.map((a, i) => (
               <Button
@@ -526,19 +527,28 @@ const APPROACH = [
 function Approach() {
   return (
     <section className="py-24 md:py-36">
-      <div className="container-x grid gap-14 lg:grid-cols-12">
-        <Reveal className="lg:col-span-4">
-          <div className="lg:sticky lg:top-32">
+      <div className="container-x grid gap-14 lg:grid-cols-12 lg:items-stretch">
+        <Reveal className="lg:order-2 lg:col-span-4 lg:col-start-9">
+          <div className="flex h-full flex-col">
             <p className="eyebrow">The POULTRIVA approach</p>
             <h2 className="display-lg mt-6">
-              Thoughtful Products. <span className="serif-accent text-gold-cta">Responsible Nutrition.</span>
+              <span className="block lg:whitespace-nowrap">Thoughtful Products.</span>
+              <span className="serif-accent block text-gold-cta lg:whitespace-nowrap">Responsible Nutrition.</span>
             </h2>
+            <div className="mt-10 min-h-[18rem] flex-1 overflow-hidden rounded-[var(--radius-photo)]">
+              <img
+                src={nutritionLabImg}
+                alt="POULTRIVA nutrition laboratory and quality formulation"
+                className="h-full w-full object-cover"
+                loading="lazy"
+              />
+            </div>
           </div>
         </Reveal>
-        <ol className="lg:col-span-7 lg:col-start-6">
+        <ol className="lg:order-1 lg:col-span-7">
           {APPROACH.map(([t, d], i) => (
             <Reveal key={t}>
-              <li className="group relative grid gap-4 py-10 md:grid-cols-12">
+              <li className="group relative grid gap-4 py-6 md:grid-cols-12">
                 <motion.span
                   className="absolute left-0 top-0 h-px w-full origin-left bg-border"
                   initial={{ scaleX: 0 }}
@@ -587,37 +597,4 @@ function Spotlight() {
   );
 }
 
-function Insights() {
-  return (
-    <section className="py-24 md:py-36">
-      <div className="container-x">
-        <div className="flex flex-wrap items-end justify-between gap-6">
-          <Reveal>
-            <p className="eyebrow">Resources & insights</p>
-            <h2 className="display-lg mt-6 max-w-2xl">
-              Knowledge for Better <span className="serif-accent text-gold-cta">Poultry Management.</span>
-            </h2>
-          </Reveal>
-          <Link to="/resources" className="btn-ghost">All resources</Link>
-        </div>
-        <div className="mt-16 grid gap-10 md:grid-cols-3">
-          {ARTICLES.map((a, i) => (
-            <Reveal key={a.slug} delay={i * 0.1} className="h-full">
-              <Link to="/resources/$slug" params={{ slug: a.slug }} className="group block">
-                <div className="aspect-[4/3] overflow-hidden rounded-[var(--radius-photo)]">
-                  <img src={a.image} alt={a.imageAlt} loading="lazy" width={1280} height={960} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                </div>
-                <p className="mt-6 text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-gold-cta">{a.category}</p>
-                <h3 className="mt-3 text-xl font-semibold leading-snug">{a.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{a.excerpt}</p>
-                <span className="link-underline mt-5 inline-flex items-center gap-2 pb-0.5 text-sm font-medium text-navy">
-                  Read more <ArrowRight className="h-3.5 w-3.5" />
-                </span>
-              </Link>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
+

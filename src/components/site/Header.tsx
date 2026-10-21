@@ -1,6 +1,6 @@
 import { Link, useLocation } from "@tanstack/react-router";
 import { AnimatePresence, motion, useScroll, useSpring } from "motion/react";
-import { Menu, X, ArrowUpRight, Phone } from "lucide-react";
+import { Menu, X, ArrowUpRight, Phone, ChevronDown } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { NAV, SITE } from "@/data/site";
 import { PRODUCTS } from "@/data/products";
@@ -11,6 +11,7 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [prodOpen, setProdOpen] = useState(false);
+  const [mobileProd, setMobileProd] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const { scrollYProgress } = useScroll();
@@ -41,6 +42,7 @@ export function Header() {
   useEffect(() => {
     setOpen(false);
     setProdOpen(false);
+    setMobileProd(false);
   }, [pathname]);
 
   useEffect(() => {
@@ -56,7 +58,7 @@ export function Header() {
       </a>
       <header
         className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-          scrolled ? "border-b border-border bg-background/90 py-3 backdrop-blur-md" : light ? "py-6" : "bg-background py-6"
+          scrolled ? "bg-background/90 py-3 shadow-[0_1px_12px_rgba(0,0,0,0.06)] backdrop-blur-md" : light ? "py-6" : "bg-background py-6"
         }`}
       >
         <div className="container-x flex items-center justify-between gap-6">
@@ -83,30 +85,73 @@ export function Header() {
                   <AnimatePresence>
                     {prodOpen && (
                       <motion.div
-                        initial={{ opacity: 0, y: 8 }}
+                        initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 8 }}
-                        transition={{ duration: 0.25 }}
-                        className="absolute left-1/2 top-full w-[34rem] -translate-x-1/2 pt-4"
+                        exit={{ opacity: 0, y: 10 }}
+                        transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+                        className="absolute left-1/2 top-full z-50 w-[62rem] max-w-[calc(100vw-2rem)] -translate-x-1/2 pt-4"
                       >
-                        <div className="grid grid-cols-2 gap-px overflow-hidden rounded-md border border-border bg-border shadow-xl">
-                          {PRODUCTS.map((p) => (
+                        <div className="grid grid-cols-12 overflow-hidden rounded-xl border border-border bg-card shadow-2xl">
+                          {/* Featured intro panel */}
+                          <div className="relative col-span-3 flex flex-col justify-between overflow-hidden bg-navy p-6 text-primary-foreground">
+                            <div
+                              className="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full border border-gold-soft/20"
+                              aria-hidden
+                            />
+                            <div>
+                              <p className="text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-gold-soft">
+                                Our Portfolio
+                              </p>
+                              <p className="serif-accent mt-3 text-2xl leading-tight text-primary-foreground">
+                                Purpose-driven poultry nutrition.
+                              </p>
+                              <p className="mt-3 text-xs leading-relaxed text-primary-foreground/70">
+                                {PRODUCTS.length} specialized supplements across nutrition, minerals, water and digestive care.
+                              </p>
+                            </div>
                             <Link
-                              key={p.slug}
-                              to="/products/$slug"
-                              params={{ slug: p.slug }}
+                              to="/products"
                               onClick={() => setProdOpen(false)}
-                              className="group bg-card p-5 transition-colors hover:bg-surface"
+                              className="group/all mt-6 inline-flex items-center gap-2 text-sm font-semibold text-gold-soft"
                             >
-                              <span className="text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-gold-cta">
-                                {p.index} · {p.category}
-                              </span>
-                              <span className="mt-1.5 flex items-center justify-between text-base font-semibold text-navy">
-                                {p.name}
-                                <ArrowUpRight className="h-4 w-4 opacity-0 transition-opacity group-hover:opacity-100" />
-                              </span>
+                              View all products
+                              <ArrowUpRight className="h-4 w-4 transition-transform group-hover/all:translate-x-0.5 group-hover/all:-translate-y-0.5" />
                             </Link>
-                          ))}
+                          </div>
+                          {/* Product list */}
+                          <div className="col-span-9 grid grid-cols-3 gap-1 p-2">
+                            {PRODUCTS.map((p, i) => (
+                              <motion.div
+                                key={p.slug}
+                                initial={{ opacity: 0, x: 8 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ duration: 0.25, delay: 0.03 * i, ease: [0.22, 1, 0.36, 1] }}
+                              >
+                                <Link
+                                  to="/products/$slug"
+                                  params={{ slug: p.slug }}
+                                  onClick={() => setProdOpen(false)}
+                                  className="group/item flex items-center gap-3 rounded-lg p-2.5 transition-colors hover:bg-surface"
+                                >
+                                  <span className="h-11 w-11 shrink-0 overflow-hidden rounded-md border border-border bg-surface">
+                                    <img
+                                      src={p.image}
+                                      alt=""
+                                      loading="lazy"
+                                      className="h-full w-full object-cover transition-transform duration-500 group-hover/item:scale-110"
+                                    />
+                                  </span>
+                                  <span className="min-w-0 flex-1">
+                                    <span className="block truncate text-sm font-semibold text-navy transition-colors group-hover/item:text-gold-cta">
+                                      {p.name}
+                                    </span>
+                                    <span className="block truncate text-[0.7rem] text-muted-foreground">{p.category}</span>
+                                  </span>
+                                  <ArrowUpRight className="h-4 w-4 shrink-0 text-gold-cta opacity-0 transition-all group-hover/item:translate-x-0.5 group-hover/item:-translate-y-0.5 group-hover/item:opacity-100" />
+                                </Link>
+                              </motion.div>
+                            ))}
+                          </div>
                         </div>
                       </motion.div>
                     )}
@@ -144,7 +189,7 @@ export function Header() {
         </div>
         <motion.div
           style={{ scaleX: progress }}
-          className="absolute bottom-0 left-0 h-px w-full origin-left bg-gold"
+          className="absolute bottom-0 left-0 z-0 h-px w-full origin-left bg-gold"
           aria-hidden
         />
       </header>
@@ -169,29 +214,95 @@ export function Header() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-40 overflow-y-auto bg-background pt-28 lg:hidden"
+            className="fixed inset-0 z-40 flex flex-col overflow-y-auto bg-background pt-24 lg:hidden"
           >
-            <nav aria-label="Mobile" className="container-x flex flex-col">
-              {[...NAV, { to: "/faqs", label: "FAQs" }].map((n, i) => (
-                <motion.div
-                  key={n.to}
-                  initial={{ opacity: 0, x: -16 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.05 * i }}
-                >
-                  <Link
-                    to={n.to}
-                    activeOptions={{ exact: n.to === "/" }}
-                    onClick={() => setOpen(false)}
-                    className="flex items-baseline justify-between border-b border-border py-4 text-3xl font-semibold text-navy transition-colors"
-                    activeProps={{ className: "border-b-2 !border-gold !text-gold-cta" }}
+            <nav aria-label="Mobile" className="container-x flex flex-1 flex-col">
+              {[...NAV, { to: "/faqs", label: "FAQs" }].map((n, i) =>
+                n.to === "/products" ? (
+                  <motion.div
+                    key={n.to}
+                    initial={{ opacity: 0, x: -16 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.05 * i, ease: [0.22, 1, 0.36, 1] }}
+                    className="border-b border-border"
                   >
-                    {n.label}
-                    <span className="text-xs text-gold-cta">0{i + 1}</span>
-                  </Link>
-                </motion.div>
-              ))}
-              <div className="mt-8 flex flex-col gap-3 pb-12">
+                    <div className="flex items-center justify-between gap-3">
+                      <Link
+                        to="/products"
+                        onClick={() => setOpen(false)}
+                        className="flex flex-1 items-center gap-3 py-3.5 text-base font-semibold text-navy transition-colors active:text-gold-cta"
+                      >
+                        <span className="w-6 text-xs font-semibold text-gold-cta">0{i + 1}</span>
+                        {n.label}
+                      </Link>
+                      <button
+                        type="button"
+                        onClick={() => setMobileProd((v) => !v)}
+                        aria-expanded={mobileProd}
+                        aria-controls="mobile-products"
+                        aria-label={mobileProd ? "Collapse products" : "Expand products"}
+                        className="flex h-8 w-8 items-center justify-center rounded-full border border-border text-navy transition-colors active:border-gold active:text-gold-cta"
+                      >
+                        <motion.span animate={{ rotate: mobileProd ? 180 : 0 }} transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}>
+                          <ChevronDown className="h-4 w-4" />
+                        </motion.span>
+                      </button>
+                    </div>
+                    <AnimatePresence initial={false}>
+                      {mobileProd && (
+                        <motion.div
+                          id="mobile-products"
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                          className="overflow-hidden"
+                        >
+                          <div className="grid grid-cols-1 gap-0.5 pb-4 pl-9 sm:grid-cols-2">
+                            {PRODUCTS.map((p) => (
+                              <Link
+                                key={p.slug}
+                                to="/products/$slug"
+                                params={{ slug: p.slug }}
+                                onClick={() => setOpen(false)}
+                                className="group flex items-center gap-2.5 rounded-lg p-1.5 transition-colors active:bg-surface"
+                              >
+                                <span className="h-8 w-8 shrink-0 overflow-hidden rounded-md border border-border bg-surface">
+                                  <img src={p.image} alt="" loading="lazy" className="h-full w-full object-cover" />
+                                </span>
+                                <span className="min-w-0 flex-1">
+                                  <span className="block truncate text-[0.8rem] font-medium text-navy">{p.name}</span>
+                                  <span className="block truncate text-[0.65rem] text-muted-foreground">{p.category}</span>
+                                </span>
+                                <ArrowUpRight className="h-3.5 w-3.5 shrink-0 text-gold-cta/70" />
+                              </Link>
+                            ))}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key={n.to}
+                    initial={{ opacity: 0, x: -16 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.05 * i, ease: [0.22, 1, 0.36, 1] }}
+                  >
+                    <Link
+                      to={n.to}
+                      activeOptions={{ exact: n.to === "/" }}
+                      onClick={() => setOpen(false)}
+                      className="flex items-center gap-3 border-b border-border py-3.5 text-base font-semibold text-navy transition-colors"
+                      activeProps={{ className: "!text-gold-cta" }}
+                    >
+                      <span className="w-6 text-xs font-semibold text-gold-cta">0{i + 1}</span>
+                      {n.label}
+                    </Link>
+                  </motion.div>
+                ),
+              )}
+              <div className="mt-auto flex flex-col gap-3 py-8">
                 <Link to="/business-enquiries" onClick={() => setOpen(false)} className="btn-primary justify-center">
                   Business Enquiry
                 </Link>

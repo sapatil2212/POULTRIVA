@@ -63,7 +63,7 @@
 
 @theme inline {
   --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
-  --font-serif: "Instrument Serif", Georgia, serif;
+  --font-serif: "Geist", ui-sans-serif, system-ui, sans-serif;
   --text-lg: 1.0625rem;
   --text-xl: 1.1875rem;
   --text-2xl: 1.375rem;
@@ -165,8 +165,8 @@
 }
 @utility serif-accent {
   font-family: var(--font-serif);
-  font-weight: 400;
-  font-style: italic;
+  font-weight: 700;
+  font-style: normal;
   letter-spacing: 0.03em;
   word-spacing: 0.08em;
 }
@@ -246,7 +246,16 @@
 .photo-frame, main div.overflow-hidden:has(> img) {
   border-radius: var(--radius-photo);
 }
-.hero-frame { border-radius: 0 0 var(--radius-hero) var(--radius-hero); }
+.hero-frame {
+  border-radius: 0 0 var(--radius-hero) var(--radius-hero);
+  /* Dark backing so any sub-pixel edge during scroll blends with the hero, never showing a white line */
+  background-color: var(--forest-deep);
+  /* Keep the rounded clip crisp and on its own compositor layer while scrolling */
+  isolation: isolate;
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
 .hero-scrim {
   background:
     /* Deep dark left side for text contrast, fading out to reveal the image on the right */
@@ -303,6 +312,17 @@
 }
 
 .animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+.animate-gallery {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 46s linear infinite;
+  will-change: transform;
+}
+
+.animate-gallery:hover {
   animation-play-state: paused;
 }
 

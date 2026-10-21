@@ -45,8 +45,8 @@ function Solutions() {
         crumbs={[{ label: "Solutions" }]}
       />
       {PRODUCTS.map((p, i) => {
-        const c = COPY[p.slug]!;
-        const dark = i === 2;
+        const c = COPY[p.slug] ?? { title: p.focusArea, text: p.shortDescription };
+        const dark = i % 4 === 2;
         return (
           <section key={p.slug} className={dark ? "grain-navy text-primary-foreground" : i % 2 ? "bg-surface" : ""}>
             <div className="container-x grid items-center gap-14 py-24 md:grid-cols-12 md:py-32">

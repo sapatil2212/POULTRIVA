@@ -4,6 +4,7 @@ import { PageHero } from "@/components/site/PageHero";
 import { FinalCTA } from "@/components/site/FinalCTA";
 import { SITE } from "@/data/site";
 import { seo } from "@/lib/seo";
+import faqSupportImg from "@/assets/biotech-lab.jpg";
 
 export const Route = createFileRoute("/faqs")({
   head: () =>
@@ -29,14 +30,24 @@ const FAQS = [
 function Faqs() {
   return (
     <>
-      <PageHero eyebrow="FAQs" title="Questions," accent="answered." crumbs={[{ label: "FAQs" }]} />
+      <PageHero eyebrow="FAQs" title="Questions," accent="answered." inlineAccent crumbs={[{ label: "FAQs" }]} />
       <section className="py-20 md:py-28">
         <div className="container-x grid gap-14 lg:grid-cols-12">
-          <div className="lg:col-span-4">
+          <div className="lg:col-span-4 lg:sticky lg:top-32 lg:self-start">
             <p className="text-muted-foreground">
               Can't find what you need?{" "}
               <Link to="/contact-us" className="font-medium text-navy underline underline-offset-4">Contact our team</Link>.
             </p>
+            <div className="mt-8 overflow-hidden rounded-[var(--radius-photo)]">
+              <img
+                src={faqSupportImg}
+                alt="POULTRIVA team ready to answer poultry nutrition questions"
+                width={1280}
+                height={960}
+                loading="lazy"
+                className="aspect-[4/3] w-full object-cover transition-transform duration-700 hover:scale-105"
+              />
+            </div>
           </div>
           <Accordion type="single" collapsible className="lg:col-span-8">
             {FAQS.map(([q, a], i) => (

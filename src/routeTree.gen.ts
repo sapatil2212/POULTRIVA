@@ -21,8 +21,6 @@ import { Route as SolutionsRouteImport } from './routes/solutions'
 import { Route as TermsOfUseRouteImport } from './routes/terms-of-use'
 import { Route as ProductsIndexRouteImport } from './routes/products.index'
 import { Route as ProductsSlugRouteImport } from './routes/products.$slug'
-import { Route as ResourcesIndexRouteImport } from './routes/resources.index'
-import { Route as ResourcesSlugRouteImport } from './routes/resources.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -84,16 +82,6 @@ const ProductsSlugRoute = ProductsSlugRouteImport.update({
   path: '/products/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ResourcesIndexRoute = ResourcesIndexRouteImport.update({
-  id: '/resources/',
-  path: '/resources/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ResourcesSlugRoute = ResourcesSlugRouteImport.update({
-  id: '/resources/$slug',
-  path: '/resources/$slug',
-  getParentRoute: () => rootRouteImport,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -107,9 +95,7 @@ export interface FileRoutesByFullPath {
   '/solutions': typeof SolutionsRoute
   '/terms-of-use': typeof TermsOfUseRoute
   '/products/$slug': typeof ProductsSlugRoute
-  '/resources/$slug': typeof ResourcesSlugRoute
   '/products/': typeof ProductsIndexRoute
-  '/resources/': typeof ResourcesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -123,9 +109,7 @@ export interface FileRoutesByTo {
   '/solutions': typeof SolutionsRoute
   '/terms-of-use': typeof TermsOfUseRoute
   '/products/$slug': typeof ProductsSlugRoute
-  '/resources/$slug': typeof ResourcesSlugRoute
   '/products': typeof ProductsIndexRoute
-  '/resources': typeof ResourcesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -140,9 +124,7 @@ export interface FileRoutesById {
   '/solutions': typeof SolutionsRoute
   '/terms-of-use': typeof TermsOfUseRoute
   '/products/$slug': typeof ProductsSlugRoute
-  '/resources/$slug': typeof ResourcesSlugRoute
   '/products/': typeof ProductsIndexRoute
-  '/resources/': typeof ResourcesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -158,9 +140,7 @@ export interface FileRouteTypes {
     | '/solutions'
     | '/terms-of-use'
     | '/products/$slug'
-    | '/resources/$slug'
     | '/products/'
-    | '/resources/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -174,9 +154,7 @@ export interface FileRouteTypes {
     | '/solutions'
     | '/terms-of-use'
     | '/products/$slug'
-    | '/resources/$slug'
     | '/products'
-    | '/resources'
   id:
     | '__root__'
     | '/'
@@ -190,9 +168,7 @@ export interface FileRouteTypes {
     | '/solutions'
     | '/terms-of-use'
     | '/products/$slug'
-    | '/resources/$slug'
     | '/products/'
-    | '/resources/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -207,9 +183,7 @@ export interface RootRouteChildren {
   SolutionsRoute: typeof SolutionsRoute
   TermsOfUseRoute: typeof TermsOfUseRoute
   ProductsSlugRoute: typeof ProductsSlugRoute
-  ResourcesSlugRoute: typeof ResourcesSlugRoute
   ProductsIndexRoute: typeof ProductsIndexRoute
-  ResourcesIndexRoute: typeof ResourcesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -298,20 +272,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProductsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/resources/': {
-      id: '/resources/'
-      path: '/resources'
-      fullPath: '/resources/'
-      preLoaderRoute: typeof ResourcesIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/resources/$slug': {
-      id: '/resources/$slug'
-      path: '/resources/$slug'
-      fullPath: '/resources/$slug'
-      preLoaderRoute: typeof ResourcesSlugRouteImport
-      parentRoute: typeof rootRouteImport
-    }
   }
 }
 
@@ -327,9 +287,7 @@ const rootRouteChildren: RootRouteChildren = {
   SolutionsRoute: SolutionsRoute,
   TermsOfUseRoute: TermsOfUseRoute,
   ProductsSlugRoute: ProductsSlugRoute,
-  ResourcesSlugRoute: ResourcesSlugRoute,
   ProductsIndexRoute: ProductsIndexRoute,
-  ResourcesIndexRoute: ResourcesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

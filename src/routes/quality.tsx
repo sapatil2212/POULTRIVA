@@ -33,9 +33,9 @@ function Quality() {
         crumbs={[{ label: "Quality" }]}
       />
       <section className="py-24 md:py-32">
-        <div className="container-x grid gap-px overflow-hidden rounded-md bg-border md:grid-cols-2 lg:grid-cols-3">
+        <div className="container-x grid gap-x-10 gap-y-14 md:grid-cols-2 lg:grid-cols-3">
           {ITEMS.map(([t, d], i) => (
-            <Reveal key={t} delay={(i % 3) * 0.08} className="group bg-background p-10 transition-colors duration-500 hover:bg-card">
+            <Reveal key={t} delay={(i % 3) * 0.08} className="group">
               <span className="serif-accent text-5xl text-gold">0{i + 1}</span>
               <h2 className="mt-8 text-2xl font-semibold">{t}</h2>
               <p className="mt-4 leading-relaxed text-muted-foreground">{d}</p>
