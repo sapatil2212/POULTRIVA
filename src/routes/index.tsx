@@ -98,7 +98,7 @@ function Hero() {
   const reduce = useMotionPreference();
   const [slide, setSlide] = useState(0);
   const [paused, setPaused] = useState(false);
-  const currentSlide = HERO_SLIDES[slide] ?? HERO_SLIDES[0];
+  const currentSlide = HERO_SLIDES[slide] ?? HERO_SLIDES[0]!;
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const textY = useTransform(scrollYProgress, [0, 1], ["0%", reduce ? "0%" : "-14%"]);
 

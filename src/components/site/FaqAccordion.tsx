@@ -29,14 +29,16 @@ export function FaqAccordion({ items }: { items: Faq[] }) {
                 className="group flex w-full items-center justify-between gap-5 py-6 text-left transition-colors hover:text-gold-cta"
               >
                 <span className="flex min-w-0 items-baseline gap-5">
-                  <span className="text-xs font-semibold text-gold-cta">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="text-xs font-semibold text-gold-cta">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
                   <span className="text-lg font-semibold text-navy transition-colors group-hover:text-gold-cta">
                     {f.question}
                   </span>
                 </span>
                 <motion.span
                   aria-hidden
-                  animate={reduce ? undefined : { rotate: isOpen ? 45 : 0 }}
+                  animate={{ rotate: reduce ? 0 : isOpen ? 45 : 0 }}
                   transition={{ duration: reduce ? 0 : 0.3, ease }}
                   className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-border text-navy transition-colors group-hover:border-gold group-hover:text-gold-cta"
                 >
@@ -57,7 +59,9 @@ export function FaqAccordion({ items }: { items: Faq[] }) {
                   transition={{ duration: reduce ? 0 : 0.35, ease }}
                   className="overflow-hidden"
                 >
-                  <p className="pb-6 pl-10 pr-12 text-base leading-relaxed text-muted-foreground">{f.answer}</p>
+                  <p className="pb-6 pl-10 pr-12 text-base leading-relaxed text-muted-foreground">
+                    {f.answer}
+                  </p>
                 </motion.dd>
               )}
             </AnimatePresence>

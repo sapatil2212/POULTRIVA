@@ -4,7 +4,7 @@ export const SITE = {
   company: "SAGL Life Sciences Pvt. Ltd.",
   phone: "+91 88550 15320",
   phoneHref: "tel:+918855015320",
-  email: "sagllifescience@gmail.com",
+  email: "poultriva.in@gmail.com",
   whatsapp: "918855015320",
   address:
     "First Floor, ABH Landmark, Office No. 101, Ashoka Marg, Opp. New Sagar Sweets, Kalpataru Nagar, Nashik, Maharashtra, India",
