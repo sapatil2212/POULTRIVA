@@ -37,7 +37,7 @@ function ProductPage() {
     ["Focus area", p.focusArea],
     ["Form", p.form],
     ["Pack sizes", p.packSizes ?? PENDING],
-    ["Dosage", p.dosage ?? PENDING],
+    [p.dosageLabel ?? "Dosage", p.dosage ?? PENDING],
     ["Storage", p.storage ?? PENDING],
   ];
 
@@ -144,7 +144,7 @@ function ProductPage() {
             <Reveal>
               <p className="eyebrow">Why {p.name}?</p>
               <h2 className="display-lg mt-6 max-w-3xl">
-                Targeted Nutrition for Better Flock Management
+                {p.benefitsHeading ?? "Targeted Nutrition for Better Flock Management"}
               </h2>
             </Reveal>
             <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -173,9 +173,9 @@ function ProductPage() {
         <section className="py-16 md:py-24">
           <div className="container-x">
             <Reveal>
-              <p className="eyebrow">Poultry applications</p>
+              <p className="eyebrow">{p.applicationsEyebrow ?? "Poultry applications"}</p>
               <h2 className="display-lg mt-6 max-w-3xl">
-                One Nutritional Solution. Multiple Production Stages.
+                {p.applicationsHeading ?? "One Nutritional Solution. Multiple Production Stages."}
               </h2>
             </Reveal>
             <div className="mt-12 grid gap-6 md:grid-cols-2">
@@ -208,9 +208,9 @@ function ProductPage() {
         <section className="bg-surface py-16 md:py-24">
           <div className="container-x">
             <Reveal>
-              <p className="eyebrow">The POULTRIVA advantage</p>
+              <p className="eyebrow">{p.advantageEyebrow ?? "The POULTRIVA advantage"}</p>
               <h2 className="display-lg mt-6 max-w-3xl">
-                Purposeful Nutrition. Practical Poultry Support.
+                {p.advantageHeading ?? "Purposeful Nutrition. Practical Poultry Support."}
               </h2>
             </Reveal>
             <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -264,7 +264,7 @@ function ProductPage() {
                       Product composition
                     </p>
                     <h3 className="mt-1 text-xl font-semibold text-navy">
-                      Comprehensive Nutritional Composition
+                      {p.compositionHeading ?? "Comprehensive Nutritional Composition"}
                     </h3>
                   </div>
                 </div>
@@ -335,7 +335,10 @@ function ProductPage() {
       <FinalCTA
         title="Interested in"
         accent={`${p.name}?`}
-        copy="Request specifications, availability or commercial supply details from our team."
+        copy={
+          p.finalCtaCopy ??
+          "Request specifications, availability or commercial supply details from our team."
+        }
       />
     </>
   );
