@@ -37,7 +37,10 @@ export type DosageRow = { category: string; quantity: string };
 export type ProductAdvantage = { title: string; description: string };
 export type ProductFaq = { question: string; answer: string };
 
+export type ProductDivision = "poultry" | "cattle";
+
 export type Product = {
+  division: ProductDivision;
   id: string;
   slug:
     | "aminova-gold"
@@ -131,6 +134,7 @@ export const PRODUCTS: Product[] = [
   {
     id: "p1",
     slug: "aminova-gold",
+    division: "poultry",
     name: "Aminova Gold",
     index: "01",
     category: "Amino Acid Nutrition",
@@ -472,6 +476,7 @@ export const PRODUCTS: Product[] = [
   {
     id: "p2",
     slug: "calconova",
+    division: "poultry",
     name: "Calconova",
     index: "02",
     category: "Calcium Supplement",
@@ -832,6 +837,7 @@ export const PRODUCTS: Product[] = [
   {
     id: "p3",
     slug: "aquacyd",
+    division: "poultry",
     name: "Aquacyd",
     index: "03",
     category: "Liquid Acidifier",
@@ -1179,6 +1185,7 @@ export const PRODUCTS: Product[] = [
   {
     id: "p4",
     slug: "gutmax",
+    division: "poultry",
     name: "Gutmax",
     index: "04",
     category: "Powder Acidifier",
@@ -1541,6 +1548,7 @@ export const PRODUCTS: Product[] = [
   {
     id: "p5",
     slug: "avivita-gold",
+    division: "poultry",
     name: "Avivita Gold",
     index: "05",
     category: "Performance Optimizer",
@@ -1870,6 +1878,7 @@ export const PRODUCTS: Product[] = [
   {
     id: "p6",
     slug: "cholinova-60",
+    division: "poultry",
     name: "Cholinova 60",
     index: "06",
     category: "Metabolic Nutrition",
@@ -2180,6 +2189,7 @@ export const PRODUCTS: Product[] = [
   {
     id: "p7",
     slug: "vaynex-a",
+    division: "poultry",
     name: "Vaynex-A",
     index: "07",
     category: "Vitamin Supplement",
@@ -2501,6 +2511,7 @@ export const PRODUCTS: Product[] = [
   {
     id: "p8",
     slug: "uricova",
+    division: "poultry",
     name: "Uricova",
     index: "08",
     category: "Metabolic Nutrition",
@@ -2843,6 +2854,7 @@ export const PRODUCTS: Product[] = [
   {
     id: "p9",
     slug: "vetaceplus",
+    division: "poultry",
     name: "Vetaceplus",
     index: "09",
     category: "Vitamin Supplement",
@@ -3181,6 +3193,7 @@ export const PRODUCTS: Product[] = [
   {
     id: "p10",
     slug: "cyntrex",
+    division: "poultry",
     name: "Cyntrex",
     index: "10",
     category: "Veterinary Formulation",
@@ -3535,6 +3548,7 @@ export const PRODUCTS: Product[] = [
   {
     id: "p11",
     slug: "biolyte",
+    division: "poultry",
     name: "Biolyte",
     index: "11",
     category: "Electrolyte Supplement",
@@ -3898,6 +3912,7 @@ export const PRODUCTS: Product[] = [
   {
     id: "p12",
     slug: "selenova",
+    division: "poultry",
     name: "Selenova",
     index: "12",
     category: "Antioxidant Supplement",
@@ -4262,6 +4277,7 @@ export const PRODUCTS: Product[] = [
   {
     id: "p13",
     slug: "dara-gold",
+    division: "cattle",
     name: "Dara Gold",
     index: "13",
     category: "Cattle Feed Supplement",
@@ -4695,6 +4711,7 @@ export const PRODUCTS: Product[] = [
   {
     id: "p14",
     slug: "h-vita-gold",
+    division: "cattle",
     name: "H-VITA GOLD",
     index: "14",
     category: "Livestock & Poultry Feed Supplement",
@@ -5121,6 +5138,7 @@ export const PRODUCTS: Product[] = [
   {
     id: "p15",
     slug: "amino-lys-98",
+    division: "poultry",
     name: "AMINO-LYS 98%",
     index: "15",
     category: "Poultry Feed Supplement",
@@ -5511,6 +5529,7 @@ export const PRODUCTS: Product[] = [
   {
     id: "p16",
     slug: "gut-shield",
+    division: "cattle",
     name: "GUT SHIELD",
     index: "16",
     category: "Livestock & Poultry Feed Additive",
@@ -5939,6 +5958,7 @@ export const PRODUCTS: Product[] = [
   {
     id: "p17",
     slug: "utri-cure",
+    division: "cattle",
     name: "UTRI CURE",
     index: "17",
     category: "Animal Healthcare Supplement",
@@ -6373,6 +6393,7 @@ export const PRODUCTS: Product[] = [
   {
     id: "p18",
     slug: "spark-up",
+    division: "cattle",
     name: "SPARK UP",
     index: "18",
     category: "Animal Energy Supplement",
@@ -6770,6 +6791,7 @@ export const PRODUCTS: Product[] = [
   {
     id: "p19",
     slug: "gas-nil",
+    division: "poultry",
     name: "GAS NIL",
     index: "19",
     category: "Poultry Farm Hygiene Product",
@@ -7198,6 +7220,7 @@ export const PRODUCTS: Product[] = [
   {
     id: "p20",
     slug: "nutri-pro-elite",
+    division: "cattle",
     name: "NUTRI PRO ELITE",
     index: "20",
     category: "Animal Healthcare Supplement",
@@ -7646,6 +7669,7 @@ export const PRODUCTS: Product[] = [
   {
     id: "p21",
     slug: "liv-tox-nil",
+    division: "cattle",
     name: "LIV TOX NIL",
     index: "21",
     category: "Animal Healthcare Supplement",
@@ -8134,6 +8158,7 @@ export const PRODUCTS: Product[] = [
   {
     id: "p22",
     slug: "teet-grow",
+    division: "cattle",
     name: "TEET GROW",
     index: "22",
     category: "Animal Feed Supplement",
@@ -8605,6 +8630,7 @@ export const PRODUCTS: Product[] = [
   {
     id: "p23",
     slug: "lactocal-gel",
+    division: "cattle",
     name: "LACTOCAL GEL",
     index: "23",
     category: "Animal Healthcare Supplement",
@@ -9097,6 +9123,7 @@ export const PRODUCTS: Product[] = [
   {
     id: "p24",
     slug: "zero-fly",
+    division: "poultry",
     name: "ZERO FLY",
     index: "24",
     category: "Farm Hygiene & Fly Control Solution",
@@ -9554,6 +9581,7 @@ export const PRODUCTS: Product[] = [
   {
     id: "p25",
     slug: "amino-limit-99",
+    division: "cattle",
     name: "AMINO LIMIT 99%",
     index: "25",
     category: "Animal Feed & Nutrition",
@@ -9998,3 +10026,6 @@ export const PRODUCTS: Product[] = [
 ];
 
 export const getProduct = (slug: string) => PRODUCTS.find((p) => p.slug === slug);
+
+export const POULTRY_PRODUCTS = PRODUCTS.filter((p) => p.division === "poultry");
+export const CATTLE_PRODUCTS = PRODUCTS.filter((p) => p.division === "cattle");
