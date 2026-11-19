@@ -58,7 +58,7 @@ const HERO_SLIDES = [
     accent: "Supporting better performance.",
     description:
       "Explore POULTRIVA's focused portfolio of poultry feed supplements, designed for nutritional support, mineral supplementation, drinking-water management and digestive care.",
-    primaryCta: { label: "Explore Our Products", to: "/products" },
+    primaryCta: { label: "Explore Poultry Products", to: "/poultry-products" },
     secondaryCta: { label: "Discover POULTRIVA", to: "/about-us" },
   },
   {
@@ -267,9 +267,12 @@ function Showcase() {
               Every POULTRIVA product is positioned around a clearly defined purpose — from nutritional and calcium
               support to drinking-water and digestive management — so you can choose with confidence.
             </p>
-            <div className="mt-9">
-              <Link to="/products" className="btn-primary">
-                Explore the Range <ArrowRight className="h-4 w-4" />
+            <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
+              <Link to="/poultry-products" className="btn-primary">
+                Poultry Products <ArrowRight className="h-4 w-4" />
+              </Link>
+              <Link to="/cattle-products" className="btn-gold">
+                Cattle Products <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
           </Reveal>
@@ -382,9 +385,12 @@ function Portfolio() {
           ))}
         </div>
         <Reveal delay={0.1}>
-          <div className="mt-14 text-center">
-            <Link to="/products" className="btn-gold">
-              View All Products <ArrowRight className="h-4 w-4" />
+          <div className="mt-14 flex flex-wrap items-center justify-center gap-4 text-center">
+            <Link to="/poultry-products" className="btn-primary">
+              View Poultry Products (15) <ArrowRight className="h-4 w-4" />
+            </Link>
+            <Link to="/cattle-products" className="btn-gold">
+              View Cattle Products (10) <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
         </Reveal>

@@ -12,9 +12,11 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutUsRouteImport } from './routes/about-us'
 import { Route as BusinessEnquiriesRouteImport } from './routes/business-enquiries'
+import { Route as CattleProductsRouteImport } from './routes/cattle-products'
 import { Route as ContactUsRouteImport } from './routes/contact-us'
 import { Route as DisclaimerRouteImport } from './routes/disclaimer'
 import { Route as FaqsRouteImport } from './routes/faqs'
+import { Route as PoultryProductsRouteImport } from './routes/poultry-products'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as QualityRouteImport } from './routes/quality'
 import { Route as SolutionsRouteImport } from './routes/solutions'
@@ -37,6 +39,11 @@ const BusinessEnquiriesRoute = BusinessEnquiriesRouteImport.update({
   path: '/business-enquiries',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CattleProductsRoute = CattleProductsRouteImport.update({
+  id: '/cattle-products',
+  path: '/cattle-products',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactUsRoute = ContactUsRouteImport.update({
   id: '/contact-us',
   path: '/contact-us',
@@ -50,6 +57,11 @@ const DisclaimerRoute = DisclaimerRouteImport.update({
 const FaqsRoute = FaqsRouteImport.update({
   id: '/faqs',
   path: '/faqs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PoultryProductsRoute = PoultryProductsRouteImport.update({
+  id: '/poultry-products',
+  path: '/poultry-products',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
@@ -87,9 +99,11 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about-us': typeof AboutUsRoute
   '/business-enquiries': typeof BusinessEnquiriesRoute
+  '/cattle-products': typeof CattleProductsRoute
   '/contact-us': typeof ContactUsRoute
   '/disclaimer': typeof DisclaimerRoute
   '/faqs': typeof FaqsRoute
+  '/poultry-products': typeof PoultryProductsRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/quality': typeof QualityRoute
   '/solutions': typeof SolutionsRoute
@@ -101,9 +115,11 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about-us': typeof AboutUsRoute
   '/business-enquiries': typeof BusinessEnquiriesRoute
+  '/cattle-products': typeof CattleProductsRoute
   '/contact-us': typeof ContactUsRoute
   '/disclaimer': typeof DisclaimerRoute
   '/faqs': typeof FaqsRoute
+  '/poultry-products': typeof PoultryProductsRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/quality': typeof QualityRoute
   '/solutions': typeof SolutionsRoute
@@ -116,9 +132,11 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about-us': typeof AboutUsRoute
   '/business-enquiries': typeof BusinessEnquiriesRoute
+  '/cattle-products': typeof CattleProductsRoute
   '/contact-us': typeof ContactUsRoute
   '/disclaimer': typeof DisclaimerRoute
   '/faqs': typeof FaqsRoute
+  '/poultry-products': typeof PoultryProductsRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/quality': typeof QualityRoute
   '/solutions': typeof SolutionsRoute
@@ -132,9 +150,11 @@ export interface FileRouteTypes {
     | '/'
     | '/about-us'
     | '/business-enquiries'
+    | '/cattle-products'
     | '/contact-us'
     | '/disclaimer'
     | '/faqs'
+    | '/poultry-products'
     | '/privacy-policy'
     | '/quality'
     | '/solutions'
@@ -146,9 +166,11 @@ export interface FileRouteTypes {
     | '/'
     | '/about-us'
     | '/business-enquiries'
+    | '/cattle-products'
     | '/contact-us'
     | '/disclaimer'
     | '/faqs'
+    | '/poultry-products'
     | '/privacy-policy'
     | '/quality'
     | '/solutions'
@@ -160,9 +182,11 @@ export interface FileRouteTypes {
     | '/'
     | '/about-us'
     | '/business-enquiries'
+    | '/cattle-products'
     | '/contact-us'
     | '/disclaimer'
     | '/faqs'
+    | '/poultry-products'
     | '/privacy-policy'
     | '/quality'
     | '/solutions'
@@ -175,9 +199,11 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutUsRoute: typeof AboutUsRoute
   BusinessEnquiriesRoute: typeof BusinessEnquiriesRoute
+  CattleProductsRoute: typeof CattleProductsRoute
   ContactUsRoute: typeof ContactUsRoute
   DisclaimerRoute: typeof DisclaimerRoute
   FaqsRoute: typeof FaqsRoute
+  PoultryProductsRoute: typeof PoultryProductsRoute
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   QualityRoute: typeof QualityRoute
   SolutionsRoute: typeof SolutionsRoute
@@ -209,6 +235,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BusinessEnquiriesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/cattle-products': {
+      id: '/cattle-products'
+      path: '/cattle-products'
+      fullPath: '/cattle-products'
+      preLoaderRoute: typeof CattleProductsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact-us': {
       id: '/contact-us'
       path: '/contact-us'
@@ -228,6 +261,13 @@ declare module '@tanstack/react-router' {
       path: '/faqs'
       fullPath: '/faqs'
       preLoaderRoute: typeof FaqsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/poultry-products': {
+      id: '/poultry-products'
+      path: '/poultry-products'
+      fullPath: '/poultry-products'
+      preLoaderRoute: typeof PoultryProductsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy-policy': {
@@ -279,9 +319,11 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutUsRoute: AboutUsRoute,
   BusinessEnquiriesRoute: BusinessEnquiriesRoute,
+  CattleProductsRoute: CattleProductsRoute,
   ContactUsRoute: ContactUsRoute,
   DisclaimerRoute: DisclaimerRoute,
   FaqsRoute: FaqsRoute,
+  PoultryProductsRoute: PoultryProductsRoute,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
   QualityRoute: QualityRoute,
   SolutionsRoute: SolutionsRoute,

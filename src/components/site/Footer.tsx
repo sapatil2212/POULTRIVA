@@ -25,7 +25,9 @@ export function Footer() {
         <div className="lg:col-span-3">
           <div className="flex items-center gap-2">
             <span className="h-2 w-2 rounded-full bg-gold" />
-            <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-soft">Poultry Products</h2>
+            <Link to="/poultry-products" className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-soft hover:underline">
+              Poultry Products
+            </Link>
           </div>
           <div className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2 text-xs sm:text-sm text-primary-foreground/80">
             {POULTRY_PRODUCTS.map((p) => (
@@ -46,7 +48,9 @@ export function Footer() {
         <div className="lg:col-span-2">
           <div className="flex items-center gap-2">
             <span className="h-2 w-2 rounded-full bg-forest" />
-            <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-soft">Cattle Products</h2>
+            <Link to="/cattle-products" className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-soft hover:underline">
+              Cattle Products
+            </Link>
           </div>
           <div className="mt-4 flex flex-col gap-2 text-xs sm:text-sm text-primary-foreground/80">
             {CATTLE_PRODUCTS.map((p) => (
@@ -69,7 +73,8 @@ export function Footer() {
           <div className="mt-4 flex flex-col gap-2.5 text-xs sm:text-sm text-primary-foreground/80">
             <Link to="/about-us" className="hover:text-gold-soft transition-colors">About Us</Link>
             <Link to="/solutions" className="hover:text-gold-soft transition-colors">Solutions</Link>
-            <Link to="/products" className="hover:text-gold-soft transition-colors">Product Portfolio</Link>
+            <Link to="/poultry-products" className="hover:text-gold-soft transition-colors">Poultry Products</Link>
+            <Link to="/cattle-products" className="hover:text-gold-soft transition-colors">Cattle Products</Link>
             <Link to="/quality" className="hover:text-gold-soft transition-colors">Quality & Commitment</Link>
             <Link to="/faqs" className="hover:text-gold-soft transition-colors">FAQs</Link>
             <Link to="/business-enquiries" className="hover:text-gold-soft transition-colors">Business Enquiries</Link>

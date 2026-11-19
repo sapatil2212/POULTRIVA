@@ -51,8 +51,11 @@ function ProductPage() {
               Home
             </Link>
             <span className="mx-2 text-gold">/</span>
-            <Link to="/products" className="hover:text-navy">
-              Products
+            <Link
+              to={p.division === "cattle" ? "/cattle-products" : "/poultry-products"}
+              className="hover:text-navy"
+            >
+              {p.division === "cattle" ? "Cattle Products" : "Poultry Products"}
             </Link>
             <span className="mx-2 text-gold">/</span>
             <span className="text-foreground">{p.name}</span>
